@@ -30,31 +30,35 @@
               <input
                 type="text"
                 class="margin-2"
+                id="amount-origin"
+
                 placeholder="Enter amount of Currency"
               />
             </label>
             <div class="medium-6 columns text-box" id = "countries">
                 <label>Country of Origin
-                  <select>
-                    <option value="US">USD</option>
-                    <option value="EU">EURO</option>
-                    <option value="UK">Pounds</option>
-                    <option value="Canada">CAD</option>
+                  <select id="currency-origin">
+                    <option value="USD">US Dollar</option>
+                    <option value="EUR">Euro</option>
+                    <option value="GBP">UK Pounds</option>
+                    <option value="CAD">Canadian Dollar</option>
+
                   </select>
                 </label>
               </div>
           </div>
           <div class="medium-6 cell">
             <label class="text-box">
-              <input type="text" placeholder="Output of Currency" />
+              <input type="text" id="amount-destination" placeholder="Output of Currency"/>
             </label>
             <div class="medium-6 columns text-box" id = "countries">
                 <label>Destination Country
-                  <select>
-                    <option value="EU">EURO</option>
-                    <option value="US">USD</option>
-                    <option value="Canada">CAD</option>
-                    <option value="UK">Pounds</option>
+                  <select id="currency-destination">
+                    <option value="EUR">Euro</option>
+                    <option value="USD">US Dollar</option>
+                    <option value="CAD">Canadian Dollar</option>
+                    <option value="GBP">UK Pounds</option>
+
                   </select>
                 </label>
               </div>
@@ -64,7 +68,9 @@
       <div class="grid-x grid-margin-x">
         <div class="cell small-4">&nbsp;</div>
         <div class="cell small-4">
-          <a href="#" class="button">Convert Currency</a>
+
+          <a href="#" class="button" id="convert-button">Convert Currency</a>
+
         </div>
         <div class="cell small-4">&nbsp;</div>
       </div>
@@ -76,3 +82,4 @@
     <script src="./assets/js/script.js"></script>
   </body>
 </html>
+
