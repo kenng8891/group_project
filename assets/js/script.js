@@ -1,7 +1,6 @@
 key = '48faf7c466632bcab0303bde';
 pullDate = moment().format("YYYY-MM-DD");
 console.log(pullDate)
-//And here's an example request: https://v6.exchangerate-api.com/v6/48faf7c466632bcab0303bde/latest/USD
 
 var amountDestination = document.getElementById('amount-destination');
 var convertBtn = document.getElementById('convert-button');
