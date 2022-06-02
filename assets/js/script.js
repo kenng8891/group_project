@@ -1,67 +1,17 @@
-// key = '48faf7c466632bcab0303bde';
-// pullDate = moment().format("YYYY-MM-DD");
-// console.log(pullDate)
-
-// var amountDestination = document.getElementById('amount-destination');
-// var convertBtn = document.getElementById('convert-button');
-// var exchangeUnit = 1
-// var counter = 0;
-// var dataStorage = [];
-// var showStorage = []
-
-// function getAPI(){
-//     var currencyOrigin = document.getElementById('currency-origin');
-//     var currencyDestination = document.getElementById('currency-destination');
-//     var selectedCurrency = currencyOrigin.options[currencyOrigin.selectedIndex].value;
-//     var exchangeAPI = 'https://v6.exchangerate-api.com/v6/'+key+'/latest/'+selectedCurrency;
-
-//     // storageData[2] = storageData[1];
-//     // storageData[1] = storageData[0];
-
-//     fetch(exchangeAPI)
-//         .then(function(response){
-//             return response.json();
-//         })
-//         .then(function(exchData){
-//             console.log(exchData);
-//             var amountOrigin = document.getElementById('amount-origin').value;
-//             const exchNum = amountOrigin*exchangeRate;
-//             amountDestination.value = exchNum;
-//             var goingRate = 1 + " " + selectedCurrency + " equals " + exchangeRate + " " + selectedDestination;
-//             document.getElementById("oneToOne").textContent = goingRate;
-//             console.log(goingRate);
-
-//             var storageData = {
-//                 rate: goingRate,
-//                 date: pullDate,
-//             };
-
-//             localStorage.setItem("time/rate", JSON.stringify(storageData))
-//             localStorage.getItem("time/rate")
-//             console.log(storageData);
-//             dataStorage[counter] = storageData;
-//             counter = counter + 1;
-//             dataStorage = dataStorage;
-//             console.log(dataStorage);
-
-//         })
-// }
-
-// convertBtn.addEventListener('click', getAPI);
-
 keyy = "02824edbf5ea8e8e723a61ec";
 //And here's an example request: https://v6.exchangerate-api.com/v6/48faf7c466632bcab0303bde/latest/USD
-pullDate = moment().format("YYYY-MM-DD");
-var amountDestination = document.getElementById("amount-destination");
-var convertBtn = document.getElementById("convert-button");
-var flag = document.getElementById("flag-image");
+pullDate = moment().format("YYYY-MM-DD HH:mm");
+const amountDestination = document.getElementById("amount-destination");
+const convertBtn = document.getElementById("convert-button");
+const flag = document.getElementById("flag-image");
 flag.style.visibility = "hidden";
-var flag2 = document.getElementById("flag-image2");
+const flag2 = document.getElementById("flag-image2");
 flag2.style.visibility = "hidden";
-var exchangeUnit = 1;
-var counter = 0;
-var dataStorage = [];
-var showStorage = [];
+const exchangeUnit = 1;
+let dataStorage = Array(3).fill(null);
+const showStorage = [];
+
+
 
 function getAPI() {
   var currencyOrigin = document.getElementById("currency-origin");
@@ -113,19 +63,26 @@ function getAPI() {
         rate: goingRate,
         date: pullDate,
           };
-    
-      localStorage.setItem("time/rate", JSON.stringify(storageData));
-      localStorage.getItem("time/rate");
-      console.log(storageData);
-      dataStorage[counter] = storageData;
-      counter = counter + 1;
-      dataStorage = dataStorage;
-      console.log(dataStorage);
-
-      console.log(goingRate);
-      console.log(exchNum)
+      
+      
+      dataStorage.shift();
+      dataStorage.push(storageData)
+      for (i = 2; i >= 0; i--) {
+        if (dataStorage[i]) {
+          localStorage.setItem(`${i}`, `Rate: ${dataStorage[i].rate}, Date: ${dataStorage[i].date}`)
+        }
+      }
+    var pullStorage = []
+    for (i = 0; i < 3; i++) {
+    pullStorage[i] = localStorage.getItem([i])
+      }
+      console.log(pullStorage)
+    document.getElementById('history').textContent = pullStorage[2]
+    document.getElementById('history1').textContent = pullStorage[1]
+    document.getElementById('history2').textContent = pullStorage[0]
+      
     })
-
+    
   //create flag for origin country
   fetch(exchangeAPI2)
     .then(function (response) {
