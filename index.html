@@ -23,6 +23,7 @@
       <h1 class="display-title">Currency Exchange Calculator</h1>
     </header>
     <div class="grid-container">
+      <div id = oneToOne></div>
       <div class="row">
         <div class="grid-x grid-padding-x">
           <div class="medium-6 cell">
@@ -31,7 +32,6 @@
                 type="text"
                 class="margin-2"
                 id="amount-origin"
-
                 placeholder="Enter amount of Currency"
               />
             </label>
@@ -77,10 +77,13 @@
         <div class="cell small-4">&nbsp;</div>
       </div>
     </div>
-    <div>Insert past data info here</div>
+    <div class = "past-info" id = "history"></div>
+    <div class = "past-info" id = "history1"></div>
+    <div class = "past-info" id = "history2"></div>
     <script>
       $(document).foundation();
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="./assets/js/script.js"></script>
   </body>
 </html>
