@@ -15,6 +15,7 @@ Deploy the website and navigate through the website.
 
 ## Usage
 The website can be deployed by clicking on the following link:
+https://kenng8891.github.io/group_project/
 
 
 After deploying the website the user can calculate the currency exchange by entering any amount of the currency in the country of origin, pressing the 'Convert Currency' butotn which will calculate the output of the conversion.
